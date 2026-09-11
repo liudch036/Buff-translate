@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buff-translate</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="header">
+    <img class="logo" src="../icons/icon48.png" alt="Buff-translate">
+    <h1>Buff-translate</h1>
+  </header>
+
+  <section class="actions">
+    <button id="btnTranslatePage" class="btn btn-primary">翻译整页</button>
+    <button id="btnSummarize" class="btn btn-primary">总结本页</button>
+    <button id="btnRestore" class="btn btn-ghost">恢复原页面</button>
+  </section>
+
+  <section class="settings">
+    <h2>接口设置（OpenAI 兼容）</h2>
+    <label>
+      <span>API Key</span>
+      <input id="apiKey" type="password" placeholder="sk-..." autocomplete="off">
+    </label>
+    <label>
+      <span>Base URL</span>
+      <input id="baseUrl" type="text" placeholder="https://api.openai.com 或 https://api.deepseek.com">
+    </label>
+    <label>
+      <span>模型</span>
+      <input id="model" type="text" placeholder="例如 gpt-4o-mini / deepseek-chat">
+    </label>
+    <label>
+      <span>目标语言</span>
+      <select id="targetLang">
+        <option value="auto">自动（中英互译）</option>
+        <option value="zh">翻译成中文</option>
+        <option value="en">翻译成英文</option>
+      </select>
+    </label>
+    <div class="btn-row">
+      <button id="btnSave" class="btn btn-primary">保存设置</button>
+      <button id="btnTest" class="btn btn-ghost">测试连接</button>
+    </div>
+  </section>
+
+  <div id="status" class="status"></div>
+
+  <footer class="footer">
+    <span>划词翻译：选中网页文字后点击浮动按钮</span>
+    <button id="btnOptions" class="link-btn">管理面板</button>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

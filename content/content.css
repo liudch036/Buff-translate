@@ -1,0 +1,95 @@
+.ai-trans-result {
+  display: block;
+  margin: 2px 0 6px;
+  padding: 2px 6px;
+  font-size: 0.92em;
+  line-height: 1.6;
+  color: #2563eb;
+  background: rgba(79, 110, 247, 0.06);
+  border-left: 3px solid #4f6ef7;
+  border-radius: 0 4px 4px 0;
+}
+
+.ai-trans-bubble {
+  position: absolute;
+  z-index: 2147483646;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #4f6ef7;
+  color: #fff;
+  font: 600 14px/32px "Segoe UI", "Microsoft YaHei", sans-serif;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  user-select: none;
+  transition: transform .12s;
+}
+.ai-trans-bubble:hover { transform: scale(1.1); background: #3f5ce0; }
+
+.ai-trans-panel {
+  position: absolute;
+  z-index: 2147483647;
+  width: 320px;
+  max-height: 320px;
+  overflow: auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.22);
+  font: 13px/1.6 "Segoe UI", "Microsoft YaHei", sans-serif;
+  color: #1f2937;
+}
+.ai-trans-panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #4f6ef7;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 10px 10px 0 0;
+}
+.ai-trans-close {
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 2px;
+}
+.ai-trans-panel-src {
+  padding: 8px 12px;
+  color: #6b7280;
+  border-bottom: 1px solid #eef0f4;
+  max-height: 90px;
+  overflow: auto;
+  word-break: break-word;
+}
+.ai-trans-panel-body {
+  padding: 10px 12px;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.ai-summary-panel {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 2147483647;
+  width: 360px;
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  font: 13px/1.7 "Segoe UI", "Microsoft YaHei", sans-serif;
+  color: #1f2937;
+}
+.ai-summary-body {
+  padding: 12px 14px;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}

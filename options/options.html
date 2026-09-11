@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buff-translate 管理面板</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="../icons/icon48.png" alt="">
+        <span>Buff-translate</span>
+      </div>
+      <nav>
+        <button class="nav-item active" data-tab="settings">接口设置</button>
+        <button class="nav-item" data-tab="language">语言设置</button>
+        <button class="nav-item" data-tab="history">历史记录</button>
+        <button class="nav-item" data-tab="stats">Token 统计</button>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <!-- 接口设置 -->
+      <section id="tab-settings" class="tab active">
+        <h2>接口设置（OpenAI 兼容）</h2>
+        <div class="card">
+          <label><span>API Key</span>
+            <input id="apiKey" type="password" placeholder="sk-..." autocomplete="off">
+          </label>
+          <label><span>Base URL</span>
+            <input id="baseUrl" type="text" placeholder="https://api.deepseek.com">
+          </label>
+          <label><span>模型</span>
+            <input id="model" type="text" placeholder="deepseek-flash">
+          </label>
+          <div class="btn-row">
+            <button id="btnSaveApi" class="btn btn-primary">保存</button>
+            <button id="btnTest" class="btn btn-ghost">测试连接</button>
+          </div>
+          <div id="apiStatus" class="status"></div>
+        </div>
+      </section>
+
+      <!-- 语言设置 -->
+      <section id="tab-language" class="tab">
+        <h2>语言设置</h2>
+        <div class="card">
+          <label><span>源语言</span>
+            <select id="sourceLang"></select>
+          </label>
+          <label><span>目标语言</span>
+            <select id="targetLang"></select>
+          </label>
+          <p class="hint">源语言选"自动检测"时将自动识别；目标语言选"自动"时，中文内容译成英文、其他内容译成中文。</p>
+          <div class="btn-row">
+            <button id="btnSaveLang" class="btn btn-primary">保存</button>
+          </div>
+          <div id="langStatus" class="status"></div>
+        </div>
+      </section>
+
+      <!-- 历史记录 -->
+      <section id="tab-history" class="tab">
+        <h2>翻译历史</h2>
+        <div class="toolbar">
+          <input id="historySearch" type="text" placeholder="搜索历史…">
+          <button id="btnClearHistory" class="btn btn-ghost">清空历史</button>
+        </div>
+        <div id="historyList" class="history-list"></div>
+      </section>
+
+      <!-- Token 统计 -->
+      <section id="tab-stats" class="tab">
+        <h2>Token 消耗统计</h2>
+        <div class="stat-cards">
+          <div class="stat-card"><div class="stat-num" id="statRequests">0</div><div class="stat-label">总请求次数</div></div>
+          <div class="stat-card"><div class="stat-num" id="statPrompt">0</div><div class="stat-label">输入 Tokens</div></div>
+          <div class="stat-card"><div class="stat-num" id="statCompletion">0</div><div class="stat-label">输出 Tokens</div></div>
+          <div class="stat-card"><div class="stat-num" id="statTotal">0</div><div class="stat-label">总计 Tokens</div></div>
+        </div>
+        <h3 class="sub-title">近 14 天</h3>
+        <table class="day-table">
+          <thead><tr><th>日期</th><th>请求次数</th><th>Tokens</th></tr></thead>
+          <tbody id="dayTableBody"></tbody>
+        </table>
+        <div class="btn-row" style="margin-top:12px">
+          <button id="btnResetStats" class="btn btn-ghost">重置统计</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+  background: #f3f5fa;
+  color: #1f2937;
+  min-height: 100vh;
+}
+
+.layout { display: flex; min-height: 100vh; }
+
+.sidebar {
+  width: 210px;
+  background: linear-gradient(180deg, #4f6ef7, #7c5cf0);
+  color: #fff;
+  padding: 20px 12px;
+  flex-shrink: 0;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 8px 20px;
+  font-weight: 700;
+  font-size: 16px;
+}
+.brand img {
+  width: 30px; height: 30px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 2px;
+}
+.nav-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 14px;
+  margin-bottom: 4px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background .15s;
+}
+.nav-item:hover { background: rgba(255, 255, 255, 0.12); }
+.nav-item.active { background: rgba(255, 255, 255, 0.22); color: #fff; font-weight: 600; }
+
+.main { flex: 1; padding: 28px 32px; max-width: 860px; }
+.tab { display: none; }
+.tab.active { display: block; }
+
+h2 { font-size: 20px; margin-bottom: 16px; }
+.sub-title { font-size: 14px; color: #6b7280; margin: 20px 0 8px; }
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  max-width: 520px;
+}
+
+label { display: block; margin-bottom: 14px; font-size: 13px; color: #4b5563; }
+label span { display: block; margin-bottom: 5px; font-weight: 600; }
+
+input, select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color .15s;
+}
+input:focus, select:focus { border-color: #4f6ef7; }
+
+.hint { font-size: 12px; color: #9ca3af; margin-bottom: 14px; line-height: 1.6; }
+
+.btn-row { display: flex; gap: 10px; }
+.btn {
+  padding: 9px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background .15s;
+}
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-primary { background: #4f6ef7; color: #fff; }
+.btn-primary:hover { background: #3f5ce0; }
+.btn-ghost { background: #e5e7eb; color: #374151; }
+.btn-ghost:hover { background: #d8dce3; }
+
+.status { min-height: 20px; margin-top: 10px; font-size: 13px; white-space: pre-wrap; }
+.status.ok { color: #059669; }
+.status.err { color: #dc2626; }
+.status.info { color: #4f6ef7; }
+
+/* 历史记录 */
+.toolbar { display: flex; gap: 10px; margin-bottom: 14px; max-width: 620px; }
+.toolbar input { flex: 1; }
+.toolbar .btn { flex-shrink: 0; }
+
+.history-list { display: flex; flex-direction: column; gap: 10px; max-width: 720px; }
+.history-item {
+  background: #fff;
+  border-radius: 10px;
+  padding: 12px 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+.history-meta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 11px;
+  color: #9ca3af;
+  margin-bottom: 6px;
+}
+.badge {
+  background: #eef1fe;
+  color: #4f6ef7;
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-weight: 600;
+}
+.history-src { font-size: 13px; color: #6b7280; white-space: pre-wrap; word-break: break-word; }
+.history-dst { font-size: 14px; color: #1f2937; margin-top: 4px; white-space: pre-wrap; word-break: break-word; border-left: 3px solid #4f6ef7; padding-left: 8px; }
+.empty { color: #9ca3af; font-size: 13px; padding: 20px 0; }
+
+/* Token 统计 */
+.stat-cards { display: flex; gap: 12px; flex-wrap: wrap; }
+.stat-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px 22px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  min-width: 150px;
+}
+.stat-num { font-size: 24px; font-weight: 700; color: #4f6ef7; }
+.stat-label { font-size: 12px; color: #6b7280; margin-top: 4px; }
+
+.day-table {
+  width: 100%;
+  max-width: 520px;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  font-size: 13px;
+}
+.day-table th, .day-table td { padding: 9px 14px; text-align: left; }
+.day-table th { background: #f6f8fb; color: #6b7280; font-weight: 600; }
+.day-table tr + tr td { border-top: 1px solid #f0f2f6; }
