@@ -1,3 +1,6 @@
 node_modules/
 test/*.local.mjs
 *.log
+
+# 第三方 Agent Skills（本机安装，不随仓库分发）
+.codebuddy/
