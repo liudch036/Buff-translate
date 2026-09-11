@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buff-translate — 让世界说你的语言</title>
+  <meta name="description" content="Buff-translate 是一款 AI 驱动的 Chrome 翻译扩展：全页面翻译、划词翻译、网页总结，兼容 OpenAI 协议，自定义 API Key。">
+  <link rel="icon" href="assets/bear-48.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <a class="brand" href="#top">
+      <img src="assets/bear-48.png" alt="Buff-translate 小熊图标" width="28" height="28">
+      <span>buff-translate</span>
+    </a>
+    <div class="nav-links">
+      <a href="#features">功能</a>
+      <a href="#install">安装</a>
+      <a class="nav-cta" href="https://github.com/liudch036/Buff-translate">GitHub ↗</a>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero" id="top">
+    <div class="aurora" aria-hidden="true">
+      <i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i>
+      <div class="grid-overlay"></div>
+    </div>
+
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="hero-tag">// Chrome AI 翻译扩展 · 开源</p>
+        <h1 class="hero-title">让世界<br>说<span class="cycler"><span id="cycleWord">中文</span></span></h1>
+        <p class="hero-sub">
+          全页面翻译 · 划词翻译 · 网页总结。<br>
+          接入你自己的大模型 Key，兼容 OpenAI 协议，数据不经过任何第三方。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-go" href="#install">立即安装</a>
+          <a class="btn btn-ghost" href="https://github.com/liudch036/Buff-translate">查看源码</a>
+        </div>
+        <div class="hero-meta">
+          <span>v1.0.0</span><span>Manifest V3</span><span>MIT License</span>
+        </div>
+      </div>
+
+      <div class="terminal" aria-label="翻译过程实时演示">
+        <div class="term-bar">
+          <i></i><i></i><i></i>
+          <span>buff-translate — live</span>
+        </div>
+        <div class="term-body" id="termBody"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ 跑马灯分隔 ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>全页面翻译</span><em>◆</em><span>划词翻译</span><em>◆</em><span>网页总结</span><em>◆</em><span>中英互译</span><em>◆</em><span>OpenAI 兼容</span><em>◆</em><span>隐私优先</span><em>◆</em>
+      <span>全页面翻译</span><em>◆</em><span>划词翻译</span><em>◆</em><span>网页总结</span><em>◆</em><span>中英互译</span><em>◆</em><span>OpenAI 兼容</span><em>◆</em><span>隐私优先</span><em>◆</em>
+    </div>
+  </div>
+
+  <main>
+    <!-- ============ 功能 ============ -->
+    <section class="features" id="features">
+      <div class="section-head reveal">
+        <p class="section-tag">// features</p>
+        <h2 class="section-title">三种方式<br>读懂任何网页</h2>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card reveal">
+          <p class="feature-id">/page</p>
+          <h3>全页面翻译</h3>
+          <p class="feature-desc">一键翻译整个页面，译文显示在原文下方形成双语对照，版面结构保持不变。</p>
+          <div class="demo demo-page" aria-hidden="true">
+            <p class="dp-src">Language should never be a barrier.</p>
+            <p class="dp-dst">语言永远不应成为壁垒。</p>
+            <p class="dp-src">One click translates the entire page.</p>
+            <p class="dp-dst">一键即可翻译整个页面。</p>
+            <p class="dp-src w60">Bilingual, side by side.</p>
+            <p class="dp-dst w45">双语对照，清晰易读。</p>
+          </div>
+          <ul class="feature-points">
+            <li>智能识别正文，跳过代码与导航</li>
+            <li>批量并发请求，长文秒出</li>
+            <li>一键恢复原页面</li>
+          </ul>
+        </article>
+
+        <article class="feature-card reveal">
+          <p class="feature-id">/selection</p>
+          <h3>划词翻译</h3>
+          <p class="feature-desc">选中任何单词或段落，点击浮动按钮，译文即刻浮现，不打断阅读节奏。</p>
+          <div class="demo demo-select" aria-hidden="true">
+            <p class="ds-text">The quick brown <mark>fox</mark> jumps over the lazy dog.</p>
+            <div class="ds-bubble">译</div>
+            <div class="ds-tip">
+              <div class="ds-tip-head">划词翻译</div>
+              <div class="ds-tip-src">fox</div>
+              <div class="ds-tip-dst">狐狸</div>
+            </div>
+          </div>
+          <ul class="feature-points">
+            <li>选中即译，无需复制粘贴</li>
+            <li>自动判断中英互译方向</li>
+            <li>自动记入翻译历史</li>
+          </ul>
+        </article>
+
+        <article class="feature-card reveal">
+          <p class="feature-id">/summary</p>
+          <h3>网页总结</h3>
+          <p class="feature-desc">长文一键提炼"一句话概括 + 核心要点"，三十秒掌握全文精华。</p>
+          <div class="demo demo-summary" aria-hidden="true">
+            <div class="dsm-head">网页总结</div>
+            <p class="dsm-key">【概括】AI 正把翻译与摘要能力带入日常浏览。</p>
+            <p class="dsm-item">— 大模型可即时翻译与总结</p>
+            <p class="dsm-item">— 无需离开当前标签页</p>
+            <p class="dsm-item">— 自有 Key，隐私可控</p>
+          </div>
+          <ul class="feature-points">
+            <li>自动提取正文，过滤干扰</li>
+            <li>要点式输出，一目了然</li>
+            <li>Token 消耗实时统计</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ 管理面板补充 ============ -->
+    <section class="panel-strip reveal">
+      <div class="panel-item"><b>历史记录</b><span>每次划词翻译与总结自动留档，可搜索可清空</span></div>
+      <div class="panel-item"><b>Token 统计</b><span>按日聚合消耗明细，花多少一目了然</span></div>
+      <div class="panel-item"><b>多语言</b><span>中 / 英 / 日 / 韩 / 法 / 德 / 西 / 俄自由切换</span></div>
+    </section>
+
+    <!-- ============ 兼容性 ============ -->
+    <section class="compat reveal">
+      <p class="section-tag">// bring-your-own-key</p>
+      <h2 class="section-title">你的 Key，你的模型</h2>
+      <p class="compat-text">
+        兼容 OpenAI 协议，支持任何提供兼容接口的服务商。
+        API Key 只保存在浏览器本地，请求直达服务商，不经过任何中间服务器。
+      </p>
+      <div class="compat-strip">
+        <span>DeepSeek</span><span>OpenAI</span><span>Moonshot</span><span>通义千问</span><span>智谱 GLM</span><span>Ollama</span>
+      </div>
+    </section>
+
+    <!-- ============ 安装 ============ -->
+    <section class="install reveal" id="install">
+      <p class="section-tag">// getting-started</p>
+      <h2 class="section-title">四步上手</h2>
+
+      <div class="install-term">
+        <div class="term-bar">
+          <i></i><i></i><i></i>
+          <span>setup.sh</span>
+        </div>
+        <div class="install-body">
+          <div class="i-step">
+            <p class="i-cmd"><span class="i-num">01</span><span class="i-prompt">$</span> git clone https://github.com/liudch036/Buff-translate.git</p>
+            <p class="i-comment"># 从 GitHub 下载源码（或直接下载 ZIP 解压）</p>
+          </div>
+          <div class="i-step">
+            <p class="i-cmd"><span class="i-num">02</span><span class="i-prompt">$</span> open chrome://extensions</p>
+            <p class="i-comment"># 开启"开发者模式" → "加载已解压的扩展程序" → 选择项目目录</p>
+          </div>
+          <div class="i-step">
+            <p class="i-cmd"><span class="i-num">03</span><span class="i-prompt">$</span> config --api-key sk-*** --base-url https://api.deepseek.com --model deepseek-flash</p>
+            <p class="i-comment"># 点击工具栏图标填入配置，点"测试连接"确认可用</p>
+          </div>
+          <div class="i-step">
+            <p class="i-cmd"><span class="i-num">04</span><span class="i-prompt">$</span> buff-translate --enjoy</p>
+            <p class="i-comment"># 任意网页点击"翻译整页"，或选中文字体验划词翻译</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="cta reveal">
+      <h2>语言不再是边界</h2>
+      <p>免费、开源、隐私优先。现在就把整个互联网变成你的母语。</p>
+      <div class="hero-actions center">
+        <a class="btn btn-go" href="https://github.com/liudch036/Buff-translate">Star on GitHub ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/bear-48.png" alt="" width="34" height="34">
+        <span>buff-translate</span>
+      </div>
+      <p>开源项目 · MIT License</p>
+      <a href="https://github.com/liudch036/Buff-translate">github.com/liudch036/Buff-translate</a>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
